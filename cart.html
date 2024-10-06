@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Fresh Food Market</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop Now</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+    <div id="cart" class="container1">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total-price"></div>
+        <button id="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Fresh Food Market. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let totalPrice = 0;
+
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsDiv = document.getElementById('cart-items');
+            const totalPriceDiv = document.getElementById('total-price');
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p>Your cart is empty!</p>';
+                totalPriceDiv.innerHTML = '';
+                document.getElementById('checkout-button').style.display = 'none';
+                return;
+            }
+
+            totalPrice = 0;  // Reset totalPrice
+            cartItemsDiv.innerHTML = '';
+            cart.forEach((item, index) => {
+                totalPrice += item.price;
+                cartItemsDiv.innerHTML += `<div>
+                    <h3>${item.name}</h3>
+                    <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto;">
+                    <p>₹${item.price}.00</p>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                </div>`;
+            });
+
+            totalPriceDiv.innerHTML = `<h3>Total Price: ₹${totalPrice}.00</h3>`;
+            document.getElementById('checkout-button').style.display = 'block';
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function proceedToCheckout() {
+            window.location.href = `payment.html?totalCost=${totalPrice}`;  // Redirects to payment page with totalCost
+        }
+
+        window.onload = loadCart;
+    </script>
+</body>
+</html>

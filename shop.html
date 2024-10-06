@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Now - Fresh Food Market</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop Now</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+    <div id="shop-now" class="container">
+        <h2>Shop Now</h2>
+
+        <!-- Veg Pizza Section -->
+        <section id="veg-pizza">
+            <div class="card-container">
+                <div class="card">
+                    <img src="veg-pizza1.jpg" alt="Margherita Pizza">
+                    <h3>Margherita Pizza</h3>
+                    <p>₹299.00</p>
+                    <button onclick="addToCart('Margherita Pizza', 299,'veg-pizza1.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="veg-pizza2.jpg" alt="Farmhouse Pizza">
+                    <h3>Farmhouse Pizza</h3>
+                    <p>₹399.00</p>
+                    <button onclick="addToCart('Farmhouse Pizza', 399,'veg-pizza2.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="veg-pizza3.jpg" alt="Veggie Delight Pizza">
+                    <h3>Veggie Delight Pizza</h3>
+                    <p>₹349.00</p>
+                    <button onclick="addToCart('Veggie Delight Pizza', 349,'veg-pizza3.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="veg-pizza4.jpg" alt="Paneer Tikka Pizza">
+                    <h3>Paneer Tikka Pizza</h3>
+                    <p>₹449.00</p>
+                    <button onclick="addToCart('Paneer Tikka Pizza', 449,'veg-pizza4.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Non-Veg Pizza Section -->
+        <section id="non-veg-pizza">
+            <div class="card-container">
+                <div class="card">
+                    <img src="nonveg-pizza1.jpg" alt="Pepperoni Pizza">
+                    <h3>Pepperoni Pizza</h3>
+                    <p>₹499.00</p>
+                    <button onclick="addToCart('Pepperoni Pizza', 499,'nonveg-pizza1.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="nonveg-pizza2.jpg" alt="Chicken Supreme Pizza">
+                    <h3>Chicken Supreme Pizza</h3>
+                    <p>₹549.00</p>
+                    <button onclick="addToCart('Chicken Supreme Pizza', 549,'nonveg-pizza2.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="nonveg-pizza3.jpg" alt="BBQ Chicken Pizza">
+                    <h3>BBQ Chicken Pizza</h3>
+                    <p>₹599.00</p>
+                    <button onclick="addToCart('BBQ Chicken Pizza', 599,'nonveg-pizza3.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="nonveg-pizza4.jpg" alt="Meat Lovers Pizza">
+                    <h3>Meat Lovers Pizza</h3>
+                    <p>₹649.00</p>
+                    <button onclick="addToCart('Meat Lovers Pizza', 649,'nonveg-pizza4.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Normal Food Section -->
+        <section id="normal-food">
+            <div class="card-container">
+                <div class="card">
+                    <img src="chicken-drumsticks.jpg" alt="Chicken Drumsticks">
+                    <h3>Chicken Drumsticks</h3>
+                    <p>₹299.00</p>
+                    <button onclick="addToCart('Chicken Drumsticks', 299, 'chicken-drumsticks.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="paneer-butter-masala.jpg" alt="Paneer Butter Masala">
+                    <h3>Paneer Butter Masala</h3>
+                    <p>₹350.00</p>
+                    <button onclick="addToCart('Paneer Butter Masala', 350, 'paneer-butter-masala.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="egg-curry.jpg" alt="Egg Curry">
+                    <h3>Egg Curry</h3>
+                    <p>₹250.00</p>
+                    <button onclick="addToCart('Egg Curry', 250,'egg-curry.jpg')">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <img src="butter-chicken.jpg" alt="Butter Chicken">
+                    <h3>Butter Chicken</h3>
+                    <p>₹499.00</p>
+                    <button onclick="addToCart('Butter Chicken', 499, 'butter-chicken.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Fresh Food Market. All rights reserved.</p>
+    </footer>
+
+    <script>
+    function addToCart(itemName, itemPrice, imagePath) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name: itemName, price: itemPrice, image: imagePath });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(itemName + " added to cart!");
+}
+
+    </script>
+</body>
+</html>
